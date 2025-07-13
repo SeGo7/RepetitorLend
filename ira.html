@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Репетитор Ирина — математика и физика</title>
+  <style>
+    :root {
+      --card-bg: rgba(0, 0, 0, 0.5);
+      --text-color: #222;
+      --accent: #6a11cb;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: url('irina.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      background-color: transparent;
+      min-height: 100vh;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 20px;
+      animation: fadeIn 2s ease;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: slideDown 1s ease;
+    }
+    .hero p {
+      font-size: 20px;
+      animation: slideUp 1.2s ease;
+    }
+    .content {
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section h2 {
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 15px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    .section p, .section li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: white;
+    }
+    .section ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #5011a1;
+      transform: scale(1.05);
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #eee;
+      margin: 50px 0 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Здравствуйте! Меня зовут Ирина</h1>
+        <p>Репетитор по математике и физике. Учитель математики в лицее «ЦОД», студентка 5 курса НГПУ им. К. Минина. Золотая медалистка, участница олимпиад, публикуюсь в научных сборниках.</p>
+      </div>
+    </section>
+
+    <main class="content">
+      <section class="section">
+        <h2>Направления подготовки</h2>
+        <ul>
+          <li>📚 Математика (1–11 классы)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Что включают занятия</h2>
+        <ul>
+          <li>📕 Объяснение школьной программы</li>
+          <li>📗 Помощь с домашкой (разбор и ошибки)</li>
+          <li>📙 Заполнение пробелов в знаниях</li>
+          <li>📘 Подготовка к контрольным</li>
+          <li>📕 Подготовка к ОГЭ/ЕГЭ (математика, физика)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Формат занятий</h2>
+        <p>☑️ Онлайн по видеосвязи + онлайн-доска на любой платформе</p>
+      </section>
+
+      <section class="section">
+        <h2>Стоимость</h2>
+        <ul>
+          <li><strong>1100 ₽</strong> — 45 минут</li>
+          <li><strong>1400 ₽</strong> — 1 час</li>
+          <li><strong>1900 ₽</strong> — 1,5 часа</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Дополнительно</h2>
+        <p>📌 Решаю задачи по алгебре, геометрии, физике:</p>
+        <ul>
+          <li>Контрольные / самостоятельные</li>
+          <li>Домашние задания</li>
+          <li>Индивидуальные задания</li>
+        </ul>
+        <p>Решения оформлены аккуратно и подробно. Цена — от 50 ₽ (зависит от объёма).</p>
+      </section>
+
+      <section class="section">
+        <h2>Образование</h2>
+        <p>Педобразование с двумя профилями — математика и физика (НГПУ им. К. Минина, 2025 г.)</p>
+      </section>
+
+      <section class="section">
+        <h2>Связь</h2>
+        <p>📲 Отвечу на все вопросы — пишите!</p>
+        <a href="https://vk.com/irinka__star" class="cta-button">Написать Ирине</a>
+      </section>
+    </main>
+
+    <div class="footer">
+      &copy; 2025 Ирина — Репетитор по математике и физике
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
