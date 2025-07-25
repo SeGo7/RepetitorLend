@@ -118,7 +118,7 @@
     footer{margin:100px 0 40px;text-align:center;color:#72809a;font-size:14px}
 
     @media(min-width:900px){.pricing{grid-template-columns:1.2fr 1fr}}
-  @media (max-width: 768px) {
+  @media screen and (max-device-width: 1024px), screen and (max-width: 768px) and (orientation: portrait) {
   .bg-repetitor {
     width: 100vw;
     height: 100vh;
@@ -135,7 +135,31 @@
     100% { opacity: 1; transform: translateX(0) scale(1); }
   }
 }
+
+  @keyframes photoEnterMobile {
+    0% { opacity: 0; transform: translateX(-50vw) scale(2); }
+    30% { opacity: 1; }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
 }
+}
+  /* === Mobile detection by capability (pointer: coarse / touch) === */
+  body.mobile .bg-repetitor{
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    transform: translateX(-50vw) scale(2);
+    animation: photoEnterMobile 2.4s ease-out forwards;
+    opacity: 0;
+  }
+  @keyframes photoEnterMobile {
+    0% { opacity: 0; transform: translateX(-50vw) scale(2); }
+    30% { opacity: 1; }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
 </style>
 </head>
 <body>
@@ -270,6 +294,13 @@
   <footer>&copy; 2025 Ирина — Репетитор по математике и физике</footer>
 
   <script>
+    // ===== mobile detection (not by width, but by capabilities) =====
+    (function(){
+      const byPointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+      const byTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+      const isMobile = byPointer || byTouch;
+      if(isMobile) document.body.classList.add('mobile');
+    })();
     // ===== Scroll progress bar =====
     const progress = document.getElementById('progressBar');
     window.addEventListener('scroll', () => {
