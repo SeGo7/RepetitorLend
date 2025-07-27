@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* ===== bg photo with intro animation ===== */
         .bg-repetitor {
             position: fixed;
             top: 0;
@@ -44,24 +43,43 @@
             z-index: -2;
             background: url('repetitor.png') no-repeat center right -10vw/140% auto;
             opacity: 0;
-            transform-origin: center;
-            transform: translateX(-50vw) scale(2);
-            animation: photoEnter 2.4s ease-out forwards;
+            animation: fadeInPhoto 2s ease-in-out forwards;
         }
 
-        @keyframes photoEnter {
+        @keyframes fadeInPhoto {
             0% {
                 opacity: 0;
-                transform: translateX(-50vw) scale(2);
-            }
-            30% {
-                opacity: 1;
             }
             100% {
                 opacity: 1;
-                transform: translateX(0) scale(1);
             }
         }
+
+        /* Mobile override to remove transform/scale */
+        @media screen and (max-device-width: 1024px), screen and (max-width: 768px) and (orientation: portrait) {
+            .bg-repetitor {
+                width: 100vw;
+                height: 100vh;
+                background-size: cover;
+                background-position: center;
+                transform: none;
+                animation: fadeInPhoto 2s ease-in-out forwards;
+                opacity: 0;
+            }
+        }
+
+        body.mobile .bg-repetitor {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            transform: none;
+            animation: fadeInPhoto 2s ease-in-out forwards;
+            opacity: 0;
+        }
+
 
         /* ===== canvas background with math glyphs ===== */
         #math-canvas {
@@ -598,7 +616,7 @@
     </section>
 
     <section class="section" id="pricing">
-        <h2 class="section-title">Стоимость</h2>
+        <h2 class="section-title">Стоимость индивидуального занятия</h2>
         <div class="pricing">
             <div class="price-calc">
                 <label for="duration">Выберите длительность занятия:</label>
@@ -607,9 +625,13 @@
                 <div class="price-value" id="priceValue">1400 ₽</div>
             </div>
             <div class="price-cards">
-                <div class="price-card"><strong>1100 ₽</strong><br/>45 минут</div>
-                <div class="price-card"><strong>1400 ₽</strong><br/>1 час</div>
-                <div class="price-card"><strong>1900 ₽</strong><br/>1,5 часа</div>
+                <p>Подбираю удобный график и интенсивность. Все материалы — в электронном виде.</p>
+                <p>Вы освоите:</p>
+                <ul class="list">
+                    <li>✔️ Разные способы решения задач</li>
+                    <li>✔️ Технику быстрого анализа и решения</li>
+                    <li>✔️ Уверенность на экзамене</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -747,7 +769,7 @@
     // ===== math canvas background =====
     const canvas = document.getElementById('math-canvas');
     const ctx = canvas.getContext('2d');
-    const glyphs = ['∑', '√', 'π', '∞', '∫', '≈', 'Δ', '±', '→', '≤', '≥', '∂', 'λ', 'θ', 'μ', 'φ'];
+    const glyphs = ['∑', '√', 'π', '∞', '∫', '≈', 'Δ', '±', '→', '≤', '≥', '∂', 'λ', 'θ', 'μ', '❤️', '⭐'];
     let particles = [];
 
     function resize() {
@@ -771,7 +793,7 @@
     function update() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
-        ctx.fillStyle = 'rgba(255,255,255,.06)';
+        ctx.fillStyle = 'rgba(255,255,255,.3)';
         particles.forEach(p => {
             p.y -= p.speed;
             p.rot += 0.002;
